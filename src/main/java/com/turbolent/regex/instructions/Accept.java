@@ -7,6 +7,7 @@ package com.turbolent.regex.instructions;
  * Use {@link #accept()} to obtain an {@code Accept} instruction.
  */
 public final class Accept<Value, Result> extends Instruction<Value, Result> {
+
     /**
      * The {@code Accept} instruction
      *
@@ -19,7 +20,6 @@ public final class Accept<Value, Result> extends Instruction<Value, Result> {
      * {@linkplain com.turbolent.regex.Thread thread} and
      * indicates the matching of all input values succeeded.
      */
-    @SuppressWarnings("unchecked")
     private Accept() {
         super(null);
     }

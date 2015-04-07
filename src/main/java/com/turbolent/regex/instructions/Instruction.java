@@ -12,6 +12,7 @@ import java.util.*;
  * @param <Result>  the type of the match result
  */
 public abstract class Instruction<Value, Result> {
+
     /**
      * The instruction that should be executed after this instruction, if any
      * <p>

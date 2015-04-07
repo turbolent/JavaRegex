@@ -18,6 +18,8 @@ import java.util.stream.Stream;
  * @param <Result>  the type of the match result
  */
 public class Concatenation<Value, Result> extends Pattern<Value, Result> {
+
+    /** The patterns to be matched */
     private final List<Pattern<Value, Result>> patterns;
 
     /**
@@ -76,7 +78,8 @@ public class Concatenation<Value, Result> extends Pattern<Value, Result> {
         (Pattern<Value, Result> pattern)
     {
         if (pattern instanceof Concatenation) {
-            final Concatenation<Value, Result> concatenation = (Concatenation<Value, Result>)pattern;
+            final Concatenation<Value, Result> concatenation =
+                (Concatenation<Value, Result>)pattern;
             return concatenation.patterns.stream().flatMap(Concatenation::flatten);
         } else
             return Stream.of(pattern);
@@ -100,8 +103,8 @@ public class Concatenation<Value, Result> extends Pattern<Value, Result> {
      */
     @SafeVarargs
     public static <Value, Result> Pattern<Value, Result> concatenation
-    (Pattern<Value, Result> pattern,
-     Pattern<Value, Result>... otherPatterns)
+        (Pattern<Value, Result> pattern,
+         Pattern<Value, Result>... otherPatterns)
     {
         Objects.requireNonNull(pattern);
         if (otherPatterns.length == 0)

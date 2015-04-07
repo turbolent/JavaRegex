@@ -6,15 +6,11 @@ import java.util.Objects;
  * The {@code Mark} instruction modifies the stack of
  * {@linkplain com.turbolent.regex.Marker markers} of the current
  * {@linkplain com.turbolent.regex.Thread thread}'s
- * {@linkplain com.turbolent.regex.ThreadState state}.
+ * {@linkplain com.turbolent.regex.ThreadState state},
+ * based on the specified {@linkplain #position position indicator}.
  * <p>
- * A {@code Mark} instruction with the {@linkplain Position#START START position indicator}
- * generates a new marker and adds it to the current thread's state.
- * A {@code Mark} instruction with the {@linkplain Position#END END position indicator} removes
- * the latest marker from the current thread's state.
- * <p>
- * A {@code Mark} instruction with a {@linkplain Position#START START position indicator} should
- * eventually be followed by a {@code Mark} instruction with an
+ * A {@code Mark} instruction with a {@linkplain Position#START START position indicator}
+ * should eventually be followed by a {@code Mark} instruction with an
  * {@linkplain Position#END END position indicator}.
  * <p>
  * The Mark instruction does <b>not</b> consume an input value
@@ -26,12 +22,16 @@ import java.util.Objects;
 public class Mark<Value, Result> extends Instruction<Value, Result> {
 
     /**
-     * The position indicator for {@link Mark} instructions
+     * The position indicator for {@link Mark} instructions defines which
+     * marker stack operation is to be performed
      *
      * @see Mark
      */
     public enum Position {
+        /** indicates a new marker is to be generated and added to the current thread's state */
         START,
+
+        /** indicates the latest marker is to be removed from the current thread's state */
         END;
 
         public static UnsupportedOperationException newUnsupportedException(Position position) {

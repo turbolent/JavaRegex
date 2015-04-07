@@ -14,12 +14,8 @@ import java.util.function.Consumer;
  * The {@linkplain com.turbolent.regex.Parser parser},
  * and the {@linkplain PartialMatch partial match}, the match that was constructed
  * up until now in the current {@linkplain com.turbolent.regex.Thread thread}.
- * <p>
  * The given {@link #moment moment} indicates when the consumer is to be invoked,
- * relative to the parsing of the {@link #pattern pattern}: A {@code Call} pattern with
- * {@link Moment#BEFORE BEFORE} invokes the consumer before parsing the given pattern,
- * and a {@code Call} pattern with {@link Moment#AFTER AFTER} invokes the consumer
- * after parsing the pattern.
+ * relative to the matching of the {@link #pattern pattern}.
  * <p>
  * The construction methods {@link #call(java.util.function.BiConsumer, Pattern)} and
  * {@link #call(java.util.function.Consumer, Pattern)} are provided for convenience purposes.
@@ -29,8 +25,14 @@ import java.util.function.Consumer;
  */
 public class Call<Value, Result> extends Pattern<Value, Result> {
 
+    /**
+     * The moment for {@link Call} patterns indicates when the consumer is to be invoked,
+     * relative to the matching of its {@link Call#pattern pattern}.
+     */
     public enum Moment {
+        /** indicates the consumer is to be invoked before matching the pattern */
         BEFORE,
+        /** indicates the consumer is to be invoked after matching the pattern */
         AFTER;
 
         private static UnsupportedOperationException newUnsupportedException(Moment moment) {
@@ -42,8 +44,16 @@ public class Call<Value, Result> extends Pattern<Value, Result> {
     /** The moment the {@link #consumer consumer} is invoked by default */
     public static final Moment DEFAULT_MOMENT = Moment.AFTER;
 
+    /**
+     * The consumer to be invoked with the {@linkplain com.turbolent.regex.Parser parser}
+     * and the {@linkplain PartialMatch partial match}
+     */
     private final BiConsumer<Parser, PartialMatch<Value, Result>> consumer;
+
+    /** The pattern to be matched */
     private final Pattern<Value, Result> pattern;
+
+    /** The moment when the {@code consumer} is to be invoked, relative to the {@link #pattern} */
     private final Moment moment;
 
     /**
@@ -53,7 +63,7 @@ public class Call<Value, Result> extends Pattern<Value, Result> {
      * the {@linkplain PartialMatch partial match}.
      * <p>
      * The {@code moment} indicates when the consumer is to be invoked, relative to
-     * the parsing of the given {@code pattern}.
+     * the matching of the given {@code pattern}.
      *
      * @param consumer  the consumer to be invoked with the
      *                  {@linkplain com.turbolent.regex.Parser parser} and the
@@ -103,7 +113,7 @@ public class Call<Value, Result> extends Pattern<Value, Result> {
      * invokes the given {@code consumer} with the {@linkplain PartialMatch partial match}.
      * <p>
      * The {@code moment} indicates when the consumer is to be invoked, relative to
-     * the parsing of the given {@code pattern}.
+     * the matching of the given {@code pattern}.
      *
      * @param consumer  the consumer to be invoked with the {@linkplain PartialMatch partial match}
      * @param pattern   the pattern to be matched

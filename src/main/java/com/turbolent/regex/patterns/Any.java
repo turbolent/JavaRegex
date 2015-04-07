@@ -9,6 +9,7 @@ package com.turbolent.regex.patterns;
  * @param <Result>  the type of the match result
  */
 public class Any<Value, Result> extends Test<Value, Result> {
+
     /**
      * The {@code Any} pattern.
      *

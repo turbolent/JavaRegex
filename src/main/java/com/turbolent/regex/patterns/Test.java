@@ -17,6 +17,7 @@ import java.util.function.Predicate;
  * @param <Result>  the type of the match result
  */
 public class Test<Value, Result> extends Pattern<Value, Result> {
+
     /** The predicate used for testing the current input value */
     protected final Predicate<Value> predicate;
 

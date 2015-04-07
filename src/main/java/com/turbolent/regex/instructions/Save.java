@@ -27,7 +27,15 @@ public class Save<Value, Result> extends Instruction<Value, Result> {
      * @see Save
      */
     public enum Position {
+        /**
+         * indicates the parsing operation's current input values index is to be saved
+         * as the starting point
+         */
         START,
+        /**
+         * indicates the parsing operation's current input values index is to be saved
+         * as the ending point
+         */
         END;
 
         public static UnsupportedOperationException newUnsupportedException(Position position) {

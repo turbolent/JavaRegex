@@ -22,7 +22,15 @@ import static com.turbolent.regex.instructions.Save.Position.START;
  * @param <Result>  the type of the match result
  */
 public class Captured<Value, Result> extends Pattern<Value, Result> {
+
+    /**
+     * The name of the group used when storing the values matching
+     * {@link #pattern} in the {@linkplain com.turbolent.regex.Match match}.
+     * May be {@code null}
+     */
     private final Object identifier;
+
+    /** The pattern to be matched */
     private final Pattern<Value, Result> pattern;
 
     /**

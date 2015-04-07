@@ -13,6 +13,8 @@ import java.util.Objects;
  * @param <Result>  the type of the match result
  */
 public class Char<Result> extends Pattern<Character, Result> {
+
+    /** The character to compare with the current input value */
     private final char character;
 
     /**

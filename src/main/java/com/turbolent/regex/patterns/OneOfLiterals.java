@@ -15,6 +15,8 @@ import java.util.stream.Stream;
  * @param <Result>  the type of the match result
  */
 public class OneOfLiterals<Value, Result> extends Test<Value, Result> {
+
+    /** The values to compare with the current input value for equality */
     private final Set<Value> values;
 
     /**

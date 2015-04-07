@@ -17,7 +17,11 @@ import java.util.Objects;
  * @param <Result>  the type of the match result
  */
 public class ZeroOrOne<Value, Result> extends Pattern<Value, Result> {
+
+    /** The pattern to be matched */
     private final Pattern<Value, Result> pattern;
+
+    /** The greediness modifier for the {@link #pattern} */
     private final Greediness greediness;
 
     /**

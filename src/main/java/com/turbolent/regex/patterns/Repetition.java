@@ -18,13 +18,21 @@ import java.util.Objects;
  * @param <Result>  the type of the match result
  */
 public class Repetition<Value, Result> extends Pattern<Value, Result> {
-    private final Pattern<Value, Result> pattern;
-    private final Greediness greediness;
-    private final int min;
-    private final int max;
 
     /** The limit for {@link #min min} and {@link #max max} */
     public static final int MIN_MAX_LIMIT = 100;
+
+    /** The pattern to be matched repeatedly */
+    private final Pattern<Value, Result> pattern;
+
+    /** The greediness modifier for {@link #pattern} */
+    private final Greediness greediness;
+
+    /** The minimum number of input values {@link #pattern} should match */
+    private final int min;
+
+    /** The maximum number of input values {@link #pattern} should match */
+    private final int max;
 
     /**
      * Creates a {@code Repetition} pattern which matches if the given {@code pattern}

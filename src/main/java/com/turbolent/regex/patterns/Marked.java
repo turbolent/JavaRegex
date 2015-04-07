@@ -23,6 +23,8 @@ import static com.turbolent.regex.instructions.Mark.Position.START;
  */
 
 public class Marked<Value, Result> extends Pattern<Value, Result> {
+
+    /** The pattern to be matched */
     private final Pattern<Value, Result> pattern;
 
     /**

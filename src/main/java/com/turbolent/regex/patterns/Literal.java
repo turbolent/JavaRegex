@@ -13,6 +13,8 @@ import java.util.Objects;
  */
 
 public class Literal<Value, Result> extends Test<Value, Result> {
+
+    /** The value to compare with the current input value for equality */
     private final Value value;
 
     /**

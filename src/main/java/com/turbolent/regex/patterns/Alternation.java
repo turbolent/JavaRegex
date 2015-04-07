@@ -17,6 +17,8 @@ import java.util.stream.Stream;
  * @param <Result>  the type of the match result
  */
 public class Alternation<Value, Result> extends Pattern<Value, Result> {
+
+    /** The patterns to be matched */
     private final List<Pattern<Value, Result>> patterns;
 
     /**
