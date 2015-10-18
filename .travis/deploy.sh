@@ -15,6 +15,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   echo -e "Committing and pushing ...\n"
   cd $REPO_DIR
+  git add -A
   git commit -a -m "update $PROJECT_NAME"
   git push
 
