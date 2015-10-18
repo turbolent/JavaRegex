@@ -2,3 +2,14 @@ language: java
 
 jdk:
   - oraclejdk8
+
+env:
+  global:
+    secure: m99LhHBNYzT483yDHiSofAeDltXqmGk3YQYeEiLIf9Xy2prMMxp/0oMJ57LUccCJCE67qxzw4MIXY2bd+5T8Z1SHlpGg3R3KRBGU3rgkCcWUfbUU3C81J1ISP4sW2DSmJxifNwsgy09qOP5du3UhudGgF1+Tm6m/jlCmD+61pfk=
+
+after_success:
+  - .travis/deploy.sh
+
+cache:
+  directories:
+    - $HOME/.m2
