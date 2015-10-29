@@ -1,4 +1,4 @@
-if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+if [[ "$TRAVIS_PULL_REQUEST" == "false" && $TRAVIS_BRANCH == "master" ]]; then
   export PROJECT_NAME=$(basename $TRAVIS_REPO_SLUG)
   echo -e "Deploying '$PROJECT_NAME' to maven repo:\n"
 
