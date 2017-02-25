@@ -126,7 +126,7 @@ public class Alternation<Value, Result> extends Pattern<Value, Result> {
                           Arrays.stream(otherPatterns)
                                 .flatMap(Alternation::flatten))
                   .collect(orderedSetCollector());
-        patterns.stream().forEach(Objects::requireNonNull);
+        patterns.forEach(Objects::requireNonNull);
         return new Alternation<>(new ArrayList<>(patterns));
     }
 }

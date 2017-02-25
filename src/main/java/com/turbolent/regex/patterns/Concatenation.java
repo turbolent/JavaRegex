@@ -116,7 +116,7 @@ public class Concatenation<Value, Result> extends Pattern<Value, Result> {
                           Arrays.stream(otherPatterns)
                                 .flatMap(Concatenation::flatten))
                   .collect(Collectors.toList());
-        patterns.stream().forEach(Objects::requireNonNull);
+        patterns.forEach(Objects::requireNonNull);
         return new Concatenation<>(patterns);
     }
 }
