@@ -89,7 +89,8 @@ public class Alternation<Value, Result> extends Pattern<Value, Result> {
     {
         if (pattern instanceof Alternation) {
             final Alternation<Value, Result> alternation = (Alternation<Value, Result>) pattern;
-            return alternation.patterns.stream().flatMap(Alternation::flatten);
+            return alternation.patterns.stream()
+                .flatMap(Alternation::<Value, Result>flatten);
         } else
             return Stream.of(pattern);
     }

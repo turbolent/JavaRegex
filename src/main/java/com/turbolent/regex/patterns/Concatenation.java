@@ -80,7 +80,8 @@ public class Concatenation<Value, Result> extends Pattern<Value, Result> {
         if (pattern instanceof Concatenation) {
             final Concatenation<Value, Result> concatenation =
                 (Concatenation<Value, Result>)pattern;
-            return concatenation.patterns.stream().flatMap(Concatenation::flatten);
+            return concatenation.patterns.stream()
+                .flatMap(Concatenation::<Value, Result>flatten);
         } else
             return Stream.of(pattern);
     }
