@@ -63,6 +63,21 @@ public class ParserTest {
     }
 
     @org.junit.Test
+    public void testMore() {
+        new PatternAsserter<>(zeroOrMore(Char('a')))
+            .assertSuccess()
+            .assertSuccess('a')
+            .assertSuccess('a', 'a')
+            .assertSuccess('a', 'a', 'a');
+
+        new PatternAsserter<>(oneOrMore(Char('a')))
+            .assertSuccess('a')
+            .assertSuccess('a', 'a')
+            .assertSuccess('a', 'a', 'a')
+            .assertFailure();
+    }
+
+    @org.junit.Test
     public void testSimple() {
         new PatternAsserter<>(Char('a').then(Char('b')).then(Char('c')))
             .assertSuccess('a', 'b', 'c')
